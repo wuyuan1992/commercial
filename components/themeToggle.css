@@ -1,0 +1,23 @@
+.themeIcon {
+  transform-origin: center 48px;
+  transition: 0.2s ease-in-out;
+  position: absolute;
+  top: calc(50% - 8px);
+  left: calc(50% - 8px);
+}
+
+.themeIconMoon {
+  transform: scale(0) rotate(-120deg);
+}
+
+.themeIconMoon.active {
+  transform: scale(1) rotate(0deg);
+}
+
+.themeIconSun {
+  transform: scale(0) rotate(120deg);
+}
+
+.themeIconSun.active {
+  transform: scale(1) rotate(0deg);
+}

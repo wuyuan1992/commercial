@@ -1,0 +1,10 @@
+@import "./base.css";
+
+@import "./light.css";
+@import "./dark.css";
+
+@import "./theme.blue.css";
+@import "./theme.indigo.css";
+@import "./theme.purple.css";
+@import "./theme.teal.css";
+@import "./theme.violet.css";

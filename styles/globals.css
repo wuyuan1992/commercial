@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root body[theme-color="blue"] {
+    /* primary */
+    --color-primary-1: var(--semi-blue-0);
+    --color-primary-2: var(--semi-blue-1);
+    --color-primary-3: var(--semi-blue-2);
+    --color-primary-4: var(--semi-blue-3);
+    --color-primary-5: var(--semi-blue-4);
+    --color-primary: var(--semi-blue-5);
+    --color-primary-6: var(--semi-blue-6);
+    --color-primary-7: var(--semi-blue-7);
+    --color-primary-8: var(--semi-blue-8);
+    --color-primary-9: var(--semi-blue-9);
+  }
+
+  :root body[theme-color="indigo"] {
+    /* primary */
+    --color-primary-1: var(--semi-indigo-0);
+    --color-primary-2: var(--semi-indigo-1);
+    --color-primary-3: var(--semi-indigo-2);
+    --color-primary-4: var(--semi-indigo-3);
+    --color-primary-5: var(--semi-indigo-4);
+    --color-primary: var(--semi-indigo-5);
+    --color-primary-6: var(--semi-indigo-6);
+    --color-primary-7: var(--semi-indigo-7);
+    --color-primary-8: var(--semi-indigo-8);
+    --color-primary-9: var(--semi-indigo-9);
+  }
+
+  :root body[theme-color="purple"] {
+    /* primary */
+    --color-primary-1: var(--semi-purple-0);
+    --color-primary-2: var(--semi-purple-1);
+    --color-primary-3: var(--semi-purple-2);
+    --color-primary-4: var(--semi-purple-3);
+    --color-primary-5: var(--semi-purple-4);
+    --color-primary: var(--semi-purple-5);
+    --color-primary-6: var(--semi-purple-6);
+    --color-primary-7: var(--semi-purple-7);
+    --color-primary-8: var(--semi-purple-8);
+    --color-primary-9: var(--semi-purple-9);
+  }
+
+  :root body[theme-color="teal"] {
+    /* primary */
+    --color-primary-1: var(--semi-teal-0);
+    --color-primary-2: var(--semi-teal-1);
+    --color-primary-3: var(--semi-teal-2);
+    --color-primary-4: var(--semi-teal-3);
+    --color-primary-5: var(--semi-teal-4);
+    --color-primary: var(--semi-teal-5);
+    --color-primary-6: var(--semi-teal-6);
+    --color-primary-7: var(--semi-teal-7);
+    --color-primary-8: var(--semi-teal-8);
+    --color-primary-9: var(--semi-teal-9);
+  }
+
+  :root body[theme-color="violet"] {
+    /* primary */
+    --color-primary-1: var(--semi-violet-0);
+    --color-primary-2: var(--semi-violet-1);
+    --color-primary-3: var(--semi-violet-2);
+    --color-primary-4: var(--semi-violet-3);
+    --color-primary-5: var(--semi-violet-4);
+    --color-primary: var(--semi-violet-5);
+    --color-primary-6: var(--semi-violet-6);
+    --color-primary-7: var(--semi-violet-7);
+    --color-primary-8: var(--semi-violet-8);
+    --color-primary-9: var(--semi-violet-9);
+  }
+}
+
+@import "./theme/index.css";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--semi-color-text-0);
+}
+p,
+label {
+  color: var(--semi-color-text-1);
+}
+
+span {
+  color: var(--semi-color-text-2);
+}
+
+.semi-modal-content,
+.semi-tooltip-wrapper {
+  background-color: #f0f0f033 !important;
+  backdrop-filter: blur(10px);
+}
+
+:root body[theme-mode="light"] .semi-modal-content,
+:root body[theme-mode="light"] .semi-tooltip-wrapper {
+  background-color: #4f515933 !important;
+}
