@@ -22,7 +22,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const payload = await request.body
+  const payload = await request.json()
+
+  console.log(payload)
 
   const product = await db.product.create({
     data: payload,

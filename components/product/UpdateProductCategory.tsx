@@ -1,10 +1,11 @@
-import { LegacyRef, useCallback, useRef, useState } from "react"
+import { LegacyRef, useCallback, useMemo, useRef, useState } from "react"
 import {
-  useCreateProductCategory,
   useRefreshState,
+  useUpdateProductCategory,
 } from "@/requests/useProductCategory"
-import { IconCopyAdd } from "@douyinfe/semi-icons"
+import { IconCopyAdd, IconEditStroked } from "@douyinfe/semi-icons"
 import { Button, Form, Modal } from "@douyinfe/semi-ui"
+import { pick } from "lodash"
 
 import { ProductCategory } from "@/types/product"
 
@@ -12,11 +13,15 @@ type FormValues = Pick<ProductCategory, "name">
 
 type FormInstance = Form<FormValues>
 
-function CreateProductCategory() {
+function UpdateProductCategory({
+  productCategory,
+}: {
+  productCategory: ProductCategory
+}) {
   const [visible, setVisible] = useState(false)
   const formRef = useRef<FormInstance>()
-  const { mutate: createProductCategory, isLoading: isCreating } =
-    useCreateProductCategory()
+  const { mutate: updateProductCategory, isLoading: isCreating } =
+    useUpdateProductCategory()
 
   const refreshState = useRefreshState()
 
@@ -32,13 +37,19 @@ function CreateProductCategory() {
     setVisible(false)
   }, [])
 
+  const { id, ...initValues } = useMemo(() => {
+    const { id, ...values } = pick(productCategory, ["id", "name"])
+
+    return { ...values, id }
+  }, [productCategory])
+
   const onSubmit = useCallback(
     async (values: FormValues) => {
-      await createProductCategory(values)
+      await updateProductCategory({ ...values, id })
       await refreshState(["productCategories"])
       onCancel()
     },
-    [createProductCategory, refreshState, onCancel]
+    [updateProductCategory, id, refreshState, onCancel]
   )
 
   const afterClose = useCallback(() => {
@@ -49,14 +60,14 @@ function CreateProductCategory() {
     <>
       <Button
         size="small"
-        icon={<IconCopyAdd size="small" />}
+        icon={<IconEditStroked size="small" />}
         block
         onClick={onOpen}
       >
-        菜单
+        更新
       </Button>
       <Modal
-        title="创建菜单"
+        title="更新菜单"
         visible={visible}
         onCancel={onCancel}
         onOk={onTriggerSubmit}
@@ -67,6 +78,7 @@ function CreateProductCategory() {
           labelPosition="inset"
           layout="vertical"
           onSubmit={onSubmit}
+          initValues={initValues}
         >
           <Form.Input
             field="name"
@@ -79,4 +91,4 @@ function CreateProductCategory() {
   )
 }
 
-export default CreateProductCategory
+export default UpdateProductCategory

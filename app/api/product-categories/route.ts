@@ -5,16 +5,15 @@ import db from "@/lib/prisma"
 export async function GET(request: NextRequest) {
   const productCategories = await db.productCategory.findMany({
     include: {
-      Product: {
+      products: {
         select: {
           id: true,
           name: true,
+          categoryId: true,
         },
       },
     },
   })
-
-  console.log({ productCategories })
 
   return NextResponse.json(productCategories)
 }

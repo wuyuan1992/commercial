@@ -1,7 +1,6 @@
 "use client"
 
-import CreateProductCategory from "@/components/product/CreateProductCategory"
-import ProductCategoryMenu from "@/components/product/ProductCategoryMenu"
+import ProductMenu from "@/components/product/ProductMenu"
 
 interface ProductLayoutProps {
   children: React.ReactNode
@@ -9,12 +8,13 @@ interface ProductLayoutProps {
 
 export default function ProductLayout({ children }: ProductLayoutProps) {
   return (
-    <div className="flex items-start gap-4">
-      <div className="flex flex-col gap-4">
-        <ProductCategoryMenu />
-        <CreateProductCategory />
+    <div className="flex gap-4" style={{ height: "calc(100vh - 32px)" }}>
+      <div className="h-full w-[240px]">
+        <ProductMenu />
       </div>
-      <div className="p-4 ">{children}</div>
+      <div className="h-full flex-1 overflow-y-auto overflow-x-hidden">
+        {children}
+      </div>
     </div>
   )
 }
